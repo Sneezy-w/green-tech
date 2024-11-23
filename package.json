@@ -36,6 +36,7 @@
 		"next-sanity": "^9.8.16",
 		"next-sanity-image": "^6.1.1",
 		"octokit": "^4.0.2",
+		"qrcode.react": "^4.1.0",
 		"react": "^18",
 		"react-device-detect": "^2.2.3",
 		"react-dom": "^18",

@@ -1,6 +1,7 @@
 import FetchDataSteps from '@/components/tutorial/fetch-data-steps'
 import { createClient } from '@/utils/supabase/server'
 import { InfoIcon } from 'lucide-react'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 export default async function ProtectedPage() {
@@ -28,6 +29,12 @@ export default async function ProtectedPage() {
 				<pre className="max-h-32 overflow-auto rounded border p-3 font-mono text-xs">
 					{JSON.stringify(user, null, 2)}
 				</pre>
+				<Link
+					href="/protected/mfa"
+					className="mt-4 text-primary hover:underline"
+				>
+					Configure Two-Factor Authentication
+				</Link>
 			</div>
 			<div>
 				<h2 className="mb-4 text-2xl font-bold">Next steps</h2>
