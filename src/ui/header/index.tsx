@@ -7,6 +7,7 @@ import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
 import { cn } from '@/lib/utils'
 import css from './Header.module.css'
+import HeaderAuth from '@/components/header-auth'
 
 export default async function Header() {
 	const { title, logo, ctas } = await getSite()
@@ -42,11 +43,12 @@ export default async function Header() {
 				</div>
 
 				<Navigation />
+				<HeaderAuth />
 
-				<CTAList
+				{/* <CTAList
 					ctas={ctas}
 					className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
-				/>
+				/> */}
 
 				<Toggle />
 			</div>
