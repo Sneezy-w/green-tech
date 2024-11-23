@@ -18,7 +18,7 @@ export default async function MFAPage() {
 		throw error
 	}
 
-	console.log(data)
+	//console.log(data)
 
 	const { data: factors } = await supabase.auth.mfa.listFactors()
 

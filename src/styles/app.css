@@ -87,6 +87,7 @@
 		accent-color: theme('colors.accent.DEFAULT');
 		caret-color: theme('colors.accent.DEFAULT');
 		scroll-behavior: smooth;
+		scrollbar-gutter: stable;
 	}
 
 	label {

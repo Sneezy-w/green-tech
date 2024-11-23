@@ -21,15 +21,20 @@ export default async function RootLayout({
 			<body className="bg-canvas text-ink">
 				<SkipToContent />
 				<Announcement />
-				{/* <GoogleReCaptchaProvider
-					reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-				> */}
-				<Header />
+
+				{/* <Header />
 				<main id="main-content" tabIndex={-1}>
 					{children}
 				</main>
-				<Footer />
-				{/* </GoogleReCaptchaProvider> */}
+				<Footer /> */}
+
+				<div className="flex min-h-screen flex-col">
+					<Header />
+					<main id="main-content" tabIndex={-1} className="flex-grow">
+						{children}
+					</main>
+					<Footer />
+				</div>
 
 				<VisualEditingControls />
 				<Analytics />

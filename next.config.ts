@@ -32,6 +32,13 @@ export default {
 		SC_DISABLE_SPEEDY: 'false',
 	},
 
+	// webpack: (config, { dev }) => {
+	// 	if (dev) {
+	// 		config.devtool = 'eval'
+	// 	}
+	// 	return config
+	// },
+
 	// logging: {
 	// 	fetches: {
 	// 		fullUrl: true,

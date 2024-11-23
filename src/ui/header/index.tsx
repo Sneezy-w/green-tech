@@ -43,7 +43,7 @@ export default async function Header() {
 				</div>
 
 				<Navigation />
-				<HeaderAuth />
+				<HeaderAuth className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto" />
 
 				{/* <CTAList
 					ctas={ctas}
