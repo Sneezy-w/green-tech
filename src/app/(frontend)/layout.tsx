@@ -7,6 +7,7 @@ import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import '@/styles/app.css'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 
 export default async function RootLayout({
 	children,
@@ -20,11 +21,15 @@ export default async function RootLayout({
 			<body className="bg-canvas text-ink">
 				<SkipToContent />
 				<Announcement />
+				{/* <GoogleReCaptchaProvider
+					reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+				> */}
 				<Header />
 				<main id="main-content" tabIndex={-1}>
 					{children}
 				</main>
 				<Footer />
+				{/* </GoogleReCaptchaProvider> */}
 
 				<VisualEditingControls />
 				<Analytics />
