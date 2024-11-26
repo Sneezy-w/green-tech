@@ -38,8 +38,10 @@ export default function MFAVerify() {
 					return
 				}
 
-				// 验证成功后重定向到受保护页面
-				router.push('/protected')
+				// mfa verification successful
+				router.refresh() // refresh server component
+				//router.push('/protected')
+				window.location.href = '/protected' // use window.location.href instead of router.push
 			} catch (error: any) {
 				setError(error.message)
 			}

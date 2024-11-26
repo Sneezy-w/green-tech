@@ -15,6 +15,12 @@ export default async function AuthButton({
 		data: { user },
 	} = await supabase.auth.getUser()
 
+	const { data: mfaData } =
+		await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
+	const needVerifyMFA =
+		mfaData?.nextLevel === 'aal2' &&
+		mfaData?.nextLevel !== mfaData?.currentLevel
+
 	if (!hasEnvVars) {
 		return (
 			<div className={cn('flex flex-wrap items-center gap-[.5em]', className)}>
@@ -51,7 +57,7 @@ export default async function AuthButton({
 			</div>
 		)
 	}
-	return user ? (
+	return user && !needVerifyMFA ? (
 		<div className="flex items-center gap-4">
 			<Link href="/protected">Hey, {user.email}!</Link>
 			<form action={signOutAction}>

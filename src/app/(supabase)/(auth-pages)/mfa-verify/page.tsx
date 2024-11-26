@@ -13,7 +13,7 @@ export default async function MFAVerifyPage({
 		data: { session },
 	} = await supabase.auth.getSession()
 
-	// 如果没有会话或已完成MFA验证，重定向到登录页面
+	// if no session or no mfa factors, redirect to sign-in
 	if (!session || session.user.factors?.length === 0) {
 		return redirect('/sign-in')
 	}

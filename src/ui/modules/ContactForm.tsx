@@ -81,70 +81,70 @@ function ContactFormContent({
 	)
 
 	return (
-		<GoogleReCaptchaProvider
-			reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-		>
-			<section className="section space-y-8">
-				{(title || description) && (
-					<header className="richtext mx-auto max-w-2xl text-center">
-						{title && <h2 className="text-2xl font-bold">{title}</h2>}
-						{description && <PortableText value={description} />}
-					</header>
+		// <GoogleReCaptchaProvider
+		// 	reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+		// >
+		<section className="section space-y-8">
+			{(title || description) && (
+				<header className="richtext mx-auto max-w-2xl text-center">
+					{title && <h2 className="text-2xl font-bold">{title}</h2>}
+					{description && <PortableText value={description} />}
+				</header>
+			)}
+
+			<form onSubmit={handleSubmit} className="mx-auto max-w-xl space-y-4">
+				<div>
+					<Label htmlFor="name">Name</Label>
+					<Input
+						id="name"
+						name="name"
+						required
+						minLength={2}
+						maxLength={100}
+						pattern="[A-Za-z0-9\s]+"
+						title="Name can only contain letters, numbers and spaces"
+					/>
+				</div>
+
+				<div>
+					<Label htmlFor="email">Email</Label>
+					<Input
+						id="email"
+						name="email"
+						type="email"
+						required
+						maxLength={254}
+					/>
+				</div>
+
+				<div>
+					<Label htmlFor="message">Message</Label>
+					<Textarea
+						id="message"
+						name="message"
+						required
+						minLength={10}
+						maxLength={1000}
+					/>
+				</div>
+
+				<Button
+					type="submit"
+					disabled={status === 'loading'}
+					className="w-full"
+				>
+					{status === 'loading' ? 'Sending...' : 'Send Message'}
+				</Button>
+
+				{status === 'success' && (
+					<p className="text-center text-green-600">{successMessage}</p>
 				)}
 
-				<form onSubmit={handleSubmit} className="mx-auto max-w-xl space-y-4">
-					<div>
-						<Label htmlFor="name">Name</Label>
-						<Input
-							id="name"
-							name="name"
-							required
-							minLength={2}
-							maxLength={100}
-							pattern="[A-Za-z0-9\s]+"
-							title="Name can only contain letters, numbers and spaces"
-						/>
-					</div>
-
-					<div>
-						<Label htmlFor="email">Email</Label>
-						<Input
-							id="email"
-							name="email"
-							type="email"
-							required
-							maxLength={254}
-						/>
-					</div>
-
-					<div>
-						<Label htmlFor="message">Message</Label>
-						<Textarea
-							id="message"
-							name="message"
-							required
-							minLength={10}
-							maxLength={1000}
-						/>
-					</div>
-
-					<Button
-						type="submit"
-						disabled={status === 'loading'}
-						className="w-full"
-					>
-						{status === 'loading' ? 'Sending...' : 'Send Message'}
-					</Button>
-
-					{status === 'success' && (
-						<p className="text-center text-green-600">{successMessage}</p>
-					)}
-
-					{status === 'error' && (
-						<p className="text-center text-red-600">{error}</p>
-					)}
-				</form>
-			</section>
-		</GoogleReCaptchaProvider>
+				{status === 'error' && (
+					<p className="text-center text-red-600">{error}</p>
+				)}
+			</form>
+		</section>
+		// </GoogleReCaptchaProvider>
 	)
 }
